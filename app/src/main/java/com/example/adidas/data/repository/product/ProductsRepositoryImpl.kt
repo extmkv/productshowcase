@@ -1,4 +1,4 @@
-package com.example.adidas.data.repository
+package com.example.adidas.data.repository.product
 
 import androidx.annotation.WorkerThread
 import com.example.adidas.core.extensions.noNetworkErrorMessage
@@ -12,18 +12,18 @@ import java.io.IOException
 import javax.inject.Inject
 
 /**
- * This is an implementation of [ProductsRepository] to handle communication with [ApiInterface] server.
+ * This is an implementation of [ProductsRepository] to handle communication with [ProductApiInterface] server.
  * @author Malik Dawar
  */
 class ProductsRepositoryImpl @Inject constructor(
-    private val apiService: ApiInterface
+    private val productApiService: ProductApiInterface
 ) : ProductsRepository {
 
     @WorkerThread
     override suspend fun loadProducts():
             Flow<DataState<ArrayList<ProductModel>>> {
         return flow {
-            apiService.loadProducts().apply {
+            productApiService.loadProducts().apply {
                 this.onSuccessSuspend {
                     data?.let {
                         emit(DataState.success(it))

@@ -1,4 +1,4 @@
-package com.example.adidas.data.repository
+package com.example.adidas.data.repository.product
 
 import com.example.adidas.data.DataState
 import com.example.adidas.data.model.ProductModel

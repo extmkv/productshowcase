@@ -57,7 +57,7 @@ class HomeViewModel @Inject constructor(
         Transformations.map(_productList) { list ->
             if (filterable.isNotBlank()) {
                 list.filter {
-                    it.name?.toLowerCase(Locale.getDefault())?.contains(filterable)!! ||
+                    it.name.toLowerCase(Locale.getDefault()).contains(filterable) ||
                             it.description.toLowerCase(Locale.getDefault()).contains(filterable)
                 }
             } else

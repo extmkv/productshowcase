@@ -1,8 +1,11 @@
 package com.example.adidas.di
 
-import com.example.adidas.data.remote.ApiInterface
-import com.example.adidas.data.repository.ProductsRepository
-import com.example.adidas.data.repository.ProductsRepositoryImpl
+import com.example.adidas.data.remote.ProductApiInterface
+import com.example.adidas.data.remote.ReviewApiInterface
+import com.example.adidas.data.repository.product.ProductsRepository
+import com.example.adidas.data.repository.product.ProductsRepositoryImpl
+import com.example.adidas.data.repository.reviews.ReviewsRepository
+import com.example.adidas.data.repository.reviews.ReviewsRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,7 +22,13 @@ class RepositoryModule {
 
     @Singleton
     @Provides
-    fun provideImagineRepository(apiService: ApiInterface): ProductsRepository {
-        return ProductsRepositoryImpl(apiService)
+    fun provideProductRepository(productApiService: ProductApiInterface): ProductsRepository {
+        return ProductsRepositoryImpl(productApiService)
+    }
+
+    @Singleton
+    @Provides
+    fun provideReviewRepository(reviewApiInterface: ReviewApiInterface): ReviewsRepository {
+        return ReviewsRepositoryImpl(reviewApiInterface)
     }
 }

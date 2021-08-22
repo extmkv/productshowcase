@@ -65,7 +65,7 @@ class HomeFragment : BaseFragment() {
                     progressDialog.show()
                 }
 
-                is ContentState, ContentNextPageState -> {
+                is ContentState -> {
                     progressDialog.dismiss()
                 }
 
