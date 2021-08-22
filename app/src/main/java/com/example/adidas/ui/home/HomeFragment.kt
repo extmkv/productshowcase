@@ -1,6 +1,8 @@
 package com.example.adidas.ui.home
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,15 +25,15 @@ import dagger.hilt.android.AndroidEntryPoint
 class HomeFragment : BaseFragment() {
 
     private val viewModel: HomeViewModel by viewModels()
-    private lateinit var viewBinding: FragmentHomeBinding
+    private lateinit var binding: FragmentHomeBinding
     private lateinit var productItemAdapter: ProductItemAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        viewBinding = FragmentHomeBinding.inflate(inflater, container, false)
-        return viewBinding.root
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,8 +44,16 @@ class HomeFragment : BaseFragment() {
             }
 
             it.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
-            viewBinding.photosRecyclerView.adapter = it
+            binding.productRecyclerView.adapter = it
         }
+
+        binding.editTextSearchView.addTextChangedListener(object : TextWatcher {
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun afterTextChanged(s: Editable) {
+                viewModel.onSearchContact(s.toString())
+            }
+        })
 
         initObservations()
     }
@@ -66,7 +76,7 @@ class HomeFragment : BaseFragment() {
             }
         }
 
-        viewModel.photosListLiveData.observe(viewLifecycleOwner) { photos ->
+        viewModel.productListLiveData.observe(viewLifecycleOwner) { photos ->
             productItemAdapter.setItems(photos)
         }
     }
