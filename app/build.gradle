@@ -98,4 +98,5 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$glide_version"
     implementation "com.github.chrisbanes:PhotoView:$PhotoView_version"
     implementation "com.kaopiz:kprogresshud:$kprogresshud_version"
+    implementation "com.facebook.shimmer:shimmer:$shimmerVersion"
 }
