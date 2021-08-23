@@ -1,6 +1,6 @@
 # Product show case
 
-A clean example of photo show case application using Product and Review APIs for the data source can be found at https://bitbucket.org/adichallenge/product-reviews-docker-composer.git.
+A clean example of product show case application using Product and Review APIs for the data source can be found at https://bitbucket.org/adichallenge/product-reviews-docker-composer.git.
 I did focus on the Kotlin coroutines, MVVM with UseCase and the repository layer. Used mockk and Junit 4 for the testing purpose.
 
 - **Language**
