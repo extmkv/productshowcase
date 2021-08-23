@@ -8,12 +8,13 @@
     tools:context=".ui.details.DetailsFragment">
 
     <ImageView
-        android:id="@+id/ImgDetailsProductBack"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_margin="@dimen/spacing_4"
+        android:id="@+id/imgDetailsProductBack"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_margin="@dimen/activity_half"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_arrow_back" />
+        android:src="@drawable/ic_arrow_back"
+        app:tint="@color/black" />
 
     <com.github.chrisbanes.photoview.PhotoView
         android:id="@+id/imgDetailsProductPhoto"
@@ -41,7 +42,8 @@
             android:gravity="start|center_vertical"
             android:maxLines="1"
             android:textColor="@color/black"
-            android:textSize="14sp"
+            android:textSize="16sp"
+            android:textStyle="bold"
             tools:ignore="RtlSymmetry"
             tools:text="Product name" />
 
@@ -55,8 +57,10 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:gravity="start|center_vertical"
+            android:minWidth="80dp"
             android:textColor="@color/black"
-            android:textSize="14sp"
+            android:textSize="16sp"
+            android:textStyle="bold"
             tools:ignore="RtlSymmetry"
             tools:text="Product price" />
     </LinearLayout>
@@ -83,7 +87,7 @@
         android:layout_marginTop="@dimen/activity_half">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/productReviewsRecyclerView"
+            android:id="@+id/recyclerViewProductReviews"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="40dp"
@@ -93,8 +97,10 @@
             tools:listitem="@layout/row_item_rating" />
 
         <Button
-            android:layout_width="match_parent"
+            android:id="@+id/btnViewProductReview"
+            android:layout_width="wrap_content"
             android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
             android:paddingStart="@dimen/activity_horizontal_margin"
             android:paddingEnd="@dimen/activity_horizontal_margin"

@@ -44,4 +44,24 @@ class ReviewsRepositoryImpl @Inject constructor(
             }
         }
     }
+
+    override suspend fun submitReviews(productId: String, review: ReviewModel): Flow<DataState<ReviewModel>> {
+        return flow {
+            reviewApiInterface.submitProductReview(productId, review).apply {
+                this.onSuccessSuspend {
+                    data?.let {
+                        emit(DataState.success(it))
+                    }
+                }
+            }.onErrorSuspend {
+                emit(DataState.error<ReviewModel>(message()))
+            }.onExceptionSuspend {
+                if (this.exception is IOException) {
+                    emit(DataState.error<ReviewModel>(noNetworkErrorMessage()))
+                } else {
+                    emit(DataState.error<ReviewModel>(somethingWentWrong()))
+                }
+            }
+        }
+    }
 }

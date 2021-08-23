@@ -15,7 +15,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="8dp"
-            android:padding="@dimen/activity_half"
             app:cardCornerRadius="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -27,6 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#B7E8E8E7"
+                android:padding="@dimen/activity_half"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -34,8 +34,8 @@
 
                 <ImageView
                     android:id="@+id/image_item_product_logo"
-                    android:layout_width="65dp"
-                    android:layout_height="65dp"
+                    android:layout_width="95dp"
+                    android:layout_height="95dp"
                     android:layout_marginStart="@dimen/activity_half"
                     android:layout_marginLeft="@dimen/activity_half"
                     android:contentDescription="@string/app_name"

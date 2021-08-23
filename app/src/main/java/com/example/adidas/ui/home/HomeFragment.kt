@@ -37,6 +37,7 @@ class HomeFragment : BaseFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         productItemAdapter = ProductItemAdapter().also {
             it.onPhotoSelectionListener { photoModel ->
                 mainActivity.saveProductItem(photoModel)

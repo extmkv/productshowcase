@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerVertical="true"
+    android:layout_margin="@dimen/activity_horizontal_margin"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <RatingBar
+        android:id="@+id/ratingBarRatingView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:stepSize="1" />
+
+    <EditText
+        android:id="@+id/etRatingView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/activity_half"
+        android:layout_marginTop="@dimen/activity_half"
+        android:layout_marginEnd="@dimen/activity_half"
+        android:ems="10"
+        android:inputType="text"
+        android:maxLines="2">
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/btnRatingView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:text="@string/label_btn_submit" />
+
+</LinearLayout>

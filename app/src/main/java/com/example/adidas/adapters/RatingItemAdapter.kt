@@ -37,6 +37,7 @@ class RatingItemAdapter :
 
         fun bind(rating: ReviewModel) {
             rowItemPhotoBinding.apply {
+                ratingBarRatingView.rating = rating.rating.toFloat()
                 tvItemProductReview.text = rating.text
             }
         }

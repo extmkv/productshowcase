@@ -12,4 +12,6 @@ import kotlinx.coroutines.flow.Flow
  */
 interface ReviewsRepository {
     suspend fun fetchReviews(productId: String): Flow<DataState<ArrayList<ReviewModel>>>
+
+    suspend fun submitReviews(productId: String, review: ReviewModel): Flow<DataState<ReviewModel>>
 }
