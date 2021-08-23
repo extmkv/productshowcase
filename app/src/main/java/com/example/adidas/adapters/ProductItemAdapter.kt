@@ -9,7 +9,7 @@ import com.example.adidas.data.model.ProductModel
 import com.example.adidas.databinding.RowItemProductBinding
 
 class ProductItemAdapter :
-    RecyclerView.Adapter<ProductItemAdapter.PhotoViewHolder>() {
+    RecyclerView.Adapter<ProductItemAdapter.ProductViewHolder>() {
 
     lateinit var onPhotoSelected: (ProductModel) -> Unit
     private val productItems: ArrayList<ProductModel> = arrayListOf()
@@ -24,25 +24,25 @@ class ProductItemAdapter :
         onPhotoSelected = listener
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         val binding = RowItemProductBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
         )
-        return PhotoViewHolder(binding)
+        return ProductViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: PhotoViewHolder, position: Int) {
-        holder.bind(productItems[position], position)
+    override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
+        holder.bind(productItems[position])
     }
 
     override fun getItemCount() = productItems.size
 
-    inner class PhotoViewHolder(private val rowItemPhotoBinding: RowItemProductBinding) :
+    inner class ProductViewHolder(private val rowItemPhotoBinding: RowItemProductBinding) :
         RecyclerView.ViewHolder(rowItemPhotoBinding.root) {
 
-        fun bind(productModel: ProductModel, position: Int) {
+        fun bind(productModel: ProductModel) {
             rowItemPhotoBinding.apply {
                 imageItemProductLogo.load(productModel.imgUrl)
                 tvItemProductTitle.text = productModel.name

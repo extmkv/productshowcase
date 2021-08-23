@@ -18,11 +18,13 @@ class DetailsViewModel @Inject constructor(
     private val fetchReviewsUseCase: FetchReviewsUseCase
 ) : ViewModel() {
 
+    var productId: String = ""
     private var _productModel = MutableLiveData<ProductModel>()
     var productModelLiveData: LiveData<ProductModel> = _productModel
 
     fun initPhotoModelFromSharedViewModel(product: ProductModel) {
         _productModel.value = product
+        productId= product.id
     }
 
     private var _uiState = MutableLiveData<DetailsUiState>()
@@ -31,14 +33,13 @@ class DetailsViewModel @Inject constructor(
     private var _reviewList = MutableLiveData<List<ReviewModel>>()
     var productReviewListLiveData: LiveData<List<ReviewModel>> = _reviewList
 
-    fun fetchProductReviews(productId: String) {
+    fun fetchProductReviews() {
         _uiState.postValue(LoadingState)
 
         viewModelScope.launch {
             fetchReviewsUseCase.invoke(productId).collect { dataState ->
                 when (dataState) {
                     is DataState.Success -> {
-                        // First page
                         _uiState.postValue(ContentState)
                         _reviewList.postValue(dataState.data!!)
                     }

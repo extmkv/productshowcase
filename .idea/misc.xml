@@ -8,6 +8,8 @@
         <entry key="app/src/main/res/layout/fragment_photo_details.xml" value="0.35104166666666664" />
         <entry key="app/src/main/res/layout/row_item_photo.xml" value="0.35104166666666664" />
         <entry key="app/src/main/res/layout/row_item_product.xml" value="0.35104166666666664" />
+        <entry key="app/src/main/res/layout/row_item_rating.xml" value="0.35104166666666664" />
+        <entry key="app/src/main/res/xml/network_security_config.xml" value="0.35104166666666664" />
       </map>
     </option>
   </component>

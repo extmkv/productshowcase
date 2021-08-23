@@ -1,11 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.details.DetailsFragment">
+
+    <ImageView
+        android:id="@+id/ImgDetailsProductBack"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="@dimen/spacing_4"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_arrow_back" />
 
     <com.github.chrisbanes.photoview.PhotoView
-        android:id="@+id/photo_view"
+        android:id="@+id/imgDetailsProductPhoto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        android:maxHeight="400dp"
+        android:minHeight="260dp"
+        android:scaleType="fitXY" />
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/activity_vertical_margin"
+        android:layout_marginTop="@dimen/spacing_4"
+        android:layout_marginEnd="@dimen/activity_vertical_margin"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_4">
+
+        <TextView
+            android:id="@+id/tvDetailsProductName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_weight="1"
+            android:gravity="start|center_vertical"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            tools:ignore="RtlSymmetry"
+            tools:text="Product name" />
+
+        <TextView
+            android:id="@+id/tvDetailsProductPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginStart="@dimen/padding_4"
+            android:layout_marginLeft="@dimen/padding_4"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:gravity="start|center_vertical"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            tools:ignore="RtlSymmetry"
+            tools:text="Product price" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvDetailsProductDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginStart="@dimen/activity_vertical_margin"
+        android:layout_marginTop="@dimen/padding_4"
+        android:layout_marginEnd="@dimen/activity_vertical_margin"
+        android:background="@android:color/transparent"
+        android:gravity="start|center_vertical"
+        android:padding="@dimen/padding_4"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        tools:ignore="RtlSymmetry"
+        tools:text="Product details" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_half">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/productReviewsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:ignore="MissingConstraints"
+            tools:itemCount="7"
+            tools:listitem="@layout/row_item_rating" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:paddingStart="@dimen/activity_horizontal_margin"
+            android:paddingEnd="@dimen/activity_horizontal_margin"
+            android:text="@string/label_btn_add_review" />
+    </RelativeLayout>
+</LinearLayout>

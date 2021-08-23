@@ -6,8 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.RecyclerView
+import com.example.adidas.adapters.RatingItemAdapter
 import com.example.adidas.base.BaseFragment
-import com.example.adidas.core.extensions.backPress
 import com.example.adidas.core.extensions.showToastMsg
 import com.example.adidas.core.utils.load
 import com.example.adidas.databinding.FragmentPhotoDetailsBinding
@@ -24,21 +25,26 @@ class DetailsFragment : BaseFragment() {
 
     private val viewModel: DetailsViewModel by viewModels()
     private val mainViewModel: MainViewModel by activityViewModels()
-    private lateinit var viewBinding: FragmentPhotoDetailsBinding
+    private lateinit var binding: FragmentPhotoDetailsBinding
+    private lateinit var ratingItemAdapter: RatingItemAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        viewBinding = FragmentPhotoDetailsBinding.inflate(inflater, container, false)
-        return viewBinding.root
+        binding = FragmentPhotoDetailsBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
         mainViewModel.productModelLiveData.value?.let {
             viewModel.initPhotoModelFromSharedViewModel(it)
-            viewModel.fetchProductReviews(it.id)
+            viewModel.fetchProductReviews()
+        }
+
+        ratingItemAdapter = RatingItemAdapter().also {
+            it.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
+            binding.productReviewsRecyclerView.adapter = it
         }
 
         initObservations()
@@ -46,7 +52,7 @@ class DetailsFragment : BaseFragment() {
 
     private fun initObservations() {
         viewModel.productModelLiveData.observe(viewLifecycleOwner) {
-            viewBinding.photoView.load(it.imgUrl)
+            binding.imgDetailsProductPhoto.load(it.imgUrl)
         }
 
         viewModel.uiStateLiveData.observe(viewLifecycleOwner) { state ->
@@ -54,11 +60,9 @@ class DetailsFragment : BaseFragment() {
                 is LoadingState -> {
                     progressDialog.show()
                 }
-
                 is ContentState -> {
                     progressDialog.dismiss()
                 }
-
                 is ErrorState -> {
                     progressDialog.dismiss()
                     showToastMsg(state.message)
@@ -67,7 +71,7 @@ class DetailsFragment : BaseFragment() {
         }
 
         viewModel.productReviewListLiveData.observe(viewLifecycleOwner) { reviews ->
-
+            ratingItemAdapter.setItems(reviews)
         }
     }
 }

@@ -6,5 +6,6 @@
     <string name="message_something_went_wrong_str">Something went wrong!</string>
     <string name="label_no_internet">No internet connection</string>
     <string name="search_here">Search product</string>
+    <string name="label_btn_add_review">Add review</string>
 
 </resources>
