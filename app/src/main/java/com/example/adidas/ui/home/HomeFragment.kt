@@ -39,8 +39,8 @@ class HomeFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         productItemAdapter = ProductItemAdapter().also {
-            it.onPhotoSelectionListener { photoModel ->
-                mainActivity.saveProductItem(photoModel)
+            it.onProductSelectionListener { productModel ->
+                mainActivity.saveProductItem(productModel)
                 replaceFragment(DetailsFragment(), addToBackStack = true)
             }
 
@@ -77,8 +77,8 @@ class HomeFragment : BaseFragment() {
             }
         }
 
-        viewModel.productListLiveData.observe(viewLifecycleOwner) { photos ->
-            productItemAdapter.setItems(photos)
+        viewModel.productListLiveData.observe(viewLifecycleOwner) { products ->
+            productItemAdapter.setItems(products)
         }
     }
 }

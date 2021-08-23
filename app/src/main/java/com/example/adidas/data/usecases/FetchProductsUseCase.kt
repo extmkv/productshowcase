@@ -4,7 +4,7 @@ import com.example.adidas.data.repository.product.ProductsRepository
 import javax.inject.Inject
 
 /**
- * A use-case to load the photos from Unsplash API.
+ * A use-case to load the products from API.
  * @author Malik Dawar
  */
 class FetchProductsUseCase @Inject constructor(private val repository: ProductsRepository) {

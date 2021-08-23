@@ -29,12 +29,8 @@ class ReviewsRepositoryImpl @Inject constructor(
                         emit(DataState.success(it))
                     }
                 }
-                // handle the case when the API request gets an error response.
-                // e.g. internal server error.
             }.onErrorSuspend {
                 emit(DataState.error<ArrayList<ReviewModel>>(message()))
-                // handle the case when the API request gets an exception response.
-                // e.g. network connection error.
             }.onExceptionSuspend {
                 if (this.exception is IOException) {
                     emit(DataState.error<ArrayList<ReviewModel>>(noNetworkErrorMessage()))
@@ -45,7 +41,7 @@ class ReviewsRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun submitReviews(productId: String, review: ReviewModel): Flow<DataState<ReviewModel>> {
+    override suspend fun submitReview(productId: String, review: ReviewModel): Flow<DataState<ReviewModel>> {
         return flow {
             reviewApiInterface.submitProductReview(productId, review).apply {
                 this.onSuccessSuspend {

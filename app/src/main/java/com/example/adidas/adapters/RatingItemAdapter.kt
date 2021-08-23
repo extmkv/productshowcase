@@ -32,11 +32,11 @@ class RatingItemAdapter :
 
     override fun getItemCount() = ratingItems.size
 
-    inner class ReviewsViewHolder(private val rowItemPhotoBinding: RowItemRatingBinding) :
-        RecyclerView.ViewHolder(rowItemPhotoBinding.root) {
+    inner class ReviewsViewHolder(private val rowItemReviewBinding: RowItemRatingBinding) :
+        RecyclerView.ViewHolder(rowItemReviewBinding.root) {
 
         fun bind(rating: ReviewModel) {
-            rowItemPhotoBinding.apply {
+            rowItemReviewBinding.apply {
                 ratingBarRatingView.rating = rating.rating.toFloat()
                 tvItemProductReview.text = rating.text
             }

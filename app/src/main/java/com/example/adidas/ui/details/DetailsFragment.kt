@@ -42,7 +42,7 @@ class DetailsFragment : BaseFragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         mainViewModel.productModelLiveData.value?.let {
-            viewModel.initPhotoModelFromSharedViewModel(it)
+            viewModel.initProductModelFromSharedViewModel(it)
         }
         viewModel.fetchProductReviews()
 

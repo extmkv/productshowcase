@@ -11,7 +11,7 @@ import com.example.adidas.databinding.RowItemProductBinding
 class ProductItemAdapter :
     RecyclerView.Adapter<ProductItemAdapter.ProductViewHolder>() {
 
-    lateinit var onPhotoSelected: (ProductModel) -> Unit
+    lateinit var onProductSelected: (ProductModel) -> Unit
     private val productItems: ArrayList<ProductModel> = arrayListOf()
 
     fun setItems(products: List<ProductModel>) {
@@ -20,8 +20,8 @@ class ProductItemAdapter :
         notifyDataSetChanged()
     }
 
-    fun onPhotoSelectionListener(listener: (ProductModel) -> Unit) {
-        onPhotoSelected = listener
+    fun onProductSelectionListener(listener: (ProductModel) -> Unit) {
+        onProductSelected = listener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
@@ -39,11 +39,11 @@ class ProductItemAdapter :
 
     override fun getItemCount() = productItems.size
 
-    inner class ProductViewHolder(private val rowItemPhotoBinding: RowItemProductBinding) :
-        RecyclerView.ViewHolder(rowItemPhotoBinding.root) {
+    inner class ProductViewHolder(private val rowItemProductBinding: RowItemProductBinding) :
+        RecyclerView.ViewHolder(rowItemProductBinding.root) {
 
         fun bind(productModel: ProductModel) {
-            rowItemPhotoBinding.apply {
+            rowItemProductBinding.apply {
                 imageItemProductLogo.load(productModel.imgUrl)
                 tvItemProductTitle.text = productModel.name
                 tvItemProductDetails.text = productModel.description
@@ -51,7 +51,7 @@ class ProductItemAdapter :
                 tvItemProductPrice.text = "${productModel.price} ${productModel.currency}"
 
                 containerItemProduct.setOnClickListener {
-                    onPhotoSelected(productModel)
+                    onProductSelected(productModel)
                 }
             }
         }

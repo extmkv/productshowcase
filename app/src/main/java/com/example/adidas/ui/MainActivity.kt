@@ -27,6 +27,6 @@ class MainActivity : BaseActivity() {
     }
 
     fun saveProductItem(product: ProductModel) {
-        viewModel.savePhotoModel(product)
+        viewModel.saveProductModel(product)
     }
 }

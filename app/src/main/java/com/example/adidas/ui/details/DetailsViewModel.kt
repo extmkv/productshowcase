@@ -24,7 +24,7 @@ class DetailsViewModel @Inject constructor(
     private var _productModel = MutableLiveData<ProductModel>()
     var productModelLiveData: LiveData<ProductModel> = _productModel
 
-    fun initPhotoModelFromSharedViewModel(product: ProductModel) {
+    fun initProductModelFromSharedViewModel(product: ProductModel) {
         _productModel.value = product
         productId= product.id
     }

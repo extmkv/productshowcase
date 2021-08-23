@@ -15,10 +15,10 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor() : ViewModel() {
 
-    private var _photoModel = MutableLiveData<ProductModel>()
-    var productModelLiveData: LiveData<ProductModel> = _photoModel
+    private var _productModel = MutableLiveData<ProductModel>()
+    var productModelLiveData: LiveData<ProductModel> = _productModel
 
-    fun savePhotoModel(product: ProductModel) {
-        _photoModel.value = product
+    fun saveProductModel(product: ProductModel) {
+        _productModel.value = product
     }
 }
