@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Adidas</string>
+    <string name="app_name">Products</string>
     <string name="screen_home_title_str">Home</string>
     <string name="screen_product_details_title_str">Product Details</string>
     <string name="message_no_network_connected_str">No network connected!</string>
